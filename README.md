@@ -1,2 +1,4 @@
-# project4
-project4
+# MIE250 Project4
+
+Please see the assignment description posted on Quercus for instructions.
+
