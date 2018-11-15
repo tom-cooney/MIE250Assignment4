@@ -1,5 +1,4 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,6 +7,7 @@ import soln.solver.ChvatalSolver;
 import soln.solver.GreedyCostSolver;
 import soln.solver.GreedyCoverageSolver;
 import soln.solver.GreedySolver;
+import soln.util.ElementSet;
 
 import java.io.*;
 
@@ -21,8 +21,14 @@ public class TestSCPSoln {
 	public static BufferedReader cin = new BufferedReader(new InputStreamReader(System.in));
 	
 	public static void main(String[] args) throws IOException {
+
 		
 		SCPModel model = new SCPModel();
+		
+		
+		
+		
+		/*
 		
 		// Create a weighted SCP with
 		//   Set 1: weight 3.0, elements { 1, 3, 5, 7, 9 }
@@ -38,12 +44,17 @@ public class TestSCPSoln {
 		model.addSetToCover(2, 2.0, Arrays.asList(new Integer[] {1,5,9}));
 		model.addSetToCover(1, 3.0, Arrays.asList(new Integer[] {1,3,5,7,9}));
 		
+		*/
+		
+		File f = new File (".\\SCPInstances\\SCP_S_50-40.txt");
+		
+		model = TestSCPSoln.readFromFile(f);
+		
 		GreedyCoverageSolver CoverageMethod = new GreedyCoverageSolver();
 		GreedyCostSolver CostMethod = new GreedyCostSolver();
 		ChvatalSolver ChvatalMethod = new ChvatalSolver();
 		
 		List<GreedySolver> solvers = Arrays.asList(new GreedySolver[] {CoverageMethod, CostMethod, ChvatalMethod});
-		
 		printComparison(solvers, model, 0.5);
 		System.out.println("==========================================================================");
 		printComparison(solvers, model, 0.3);
@@ -51,6 +62,42 @@ public class TestSCPSoln {
 		printComparison(solvers, model, 0.9);
 	}
 		
+	
+	//public static BufferedReader cin2 = new BufferedReader(new InputStreamReader(System.in));
+		public static SCPModel readFromFile(File file) throws IOException{
+			BufferedReader fin = new BufferedReader(new FileReader (file));
+			SCPModel model2 = new SCPModel();
+			ArrayList<String> list = new ArrayList<String>();
+			String str;
+			while((str = fin.readLine()) != null) {
+				list.add(str);
+			}
+			list.remove(0);
+			list.remove(0);
+			Double cost = 0.0;
+			int i = 1;
+			List<Integer> intList = new ArrayList();
+			for(String str1 : list) {
+				if(str1.contains(".")){
+					cost = Double.parseDouble(str1);
+				}
+				else {
+					if(str1.equals("0")) {
+						model2.addSetToCover(i, cost, intList);
+						i++;
+						intList.clear();
+					}
+					else {
+						intList.add(Integer.parseInt(str1));
+					}
+				}
+			}
+			fin.close();
+			return model2;
+		}
+	
+	
+	
 	// set minimum coverage level for solution methods
 	public static void printComparison(List<GreedySolver> solvers, SCPModel model, double alpha) {
 			
