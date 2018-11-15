@@ -147,6 +147,8 @@ public abstract class GreedySolver {
         for (ElementSet s : _solnSets2) {
             System.out.print(s.getId() + " ");
         }
+     
+        
         System.out.println("\n");
     }
 

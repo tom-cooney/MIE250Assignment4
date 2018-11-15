@@ -21,6 +21,8 @@ public class TestSCPSoln {
 	public static BufferedReader cin = new BufferedReader(new InputStreamReader(System.in));
 	
 	public static void main(String[] args) throws IOException {
+		
+		
 
 		
 		SCPModel model = new SCPModel();
