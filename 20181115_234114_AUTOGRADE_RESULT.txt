@@ -1,0 +1,36 @@
+FailedTestCases:
+test2: ../files/SCP_S_10-20.txt
+
+Computation Time NOT EQUAL OR LESS THAN REQUIRED
+
+Solution Used Time: 2
+User Used Time: 467
+=========
+
+test7: ../files/SCP_M_100-600.txt
+
+Computation Time NOT EQUAL OR LESS THAN REQUIRED
+
+Solution Used Time: 15
+User Used Time: 127
+=========
+
+test8: ../files/SCP_M_250-200.txt
+
+Computation Time NOT EQUAL OR LESS THAN REQUIRED
+
+Solution Used Time: 25
+User Used Time: 357
+=========
+
+test14: ../files/SCP_L_1000-600.txt
+This single test 14 took too long to run
+test15: ../files/SCP_L_1000-1000.txt
+This single test 15 took too long to run
+test16: ../files/SCP_L_1000-1200.txt
+This single test 16 took too long to run
+
+
+Your grade for this assignment: 5.0 out of 8.0
+If you think there is a grading mistake,
+Please consult the TA during office hours.
